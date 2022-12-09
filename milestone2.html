@@ -1,0 +1,123 @@
+<head><style data-merge-styles="true"></style>
+  <style data-merge-styles="true"></style><title>Improving NIC</title>
+  <meta property="og:title" content="Your" project="" name"="">
+  <meta name="twitter:title" content="Your Project Name">
+  <meta name="description" content="Your project about your cool topic described right here.">
+  <meta property="og:description" content="Your project about your cool topic described right here.">
+  <meta name="twitter:description" content="Your project about your cool topic described right here.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- bootstrap for mobile-friendly layout -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+</head>
+<body class="nd-docs" data-new-gr-c-s-check-loaded="14.1088.0" data-gr-ext-installed="">
+  <div class="nd-pageheader">
+    <div class="container">
+      <h1 class="lead">
+        <nobr class="widenobr">Deep Learning Final Project</nobr>
+        <nobr class="widenobr">For CS 7150</nobr>
+      </h1>
+    </div>
+  </div><!-- end nd-pageheader -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col justify-content-center text-center">
+        <h2>Comparitive analysis of different BERT models on NBME - Score Clinical Patient Notes</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+
+        <h3>Overview</h3>
+
+        <p>
+		A patient's notes are the sole way for a doctor to communicate with another doctor or with a patient. 
+It determines whether a patient's diagnosis is correct, and it takes feedback on the notes from other 
+doctors with extensive experience in writing patient notes, including patient problems, 
+physical examinations, test reports, complaints, possible diagnosis, and follow-up treatment. 
+However, having physicians score patient note exams requires significant time, along with human and financial resources. Approaches using natural language processing have been created to address this problem, but patient notes can still be challenging to score computationally because features may be expressed in many ways. This takes a long time to learn and access, but it can be enhanced with the help of Natural Language Processing and Deep Learning Algorithms. 
+ 
+
+        </p>
+<h4> Dataset </h4>
+<p> The Dataset is from a Kaggle competition <a href= "https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/overview">NBME – Score Clinical Patient Notes.</a> The dataset contains of 3 training csv and 1 testing dataset csv.<br>
+<b> Patient_notes.csv: </b> A collection of about 40,000 Patient Note history portions. Only a subset of these have features annotated. You may wish to apply unsupervised learning techniques on the notes without annotations. The patient notes in the test set are not included in the public version of this file.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp pn_num - A unique identifier for each patient note. <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp case_num - A unique identifier for the clinical case a patient note represents.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp pn_history - The text of the encounter as recorded by the test taker.
+<br>
+
+<b> features.csv: </b>The rubric of features (or key concepts) for each clinical case.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp feature_num - A unique identifier for each feature. <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp case_num - A unique identifier for each case.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp feature_text - A description of the feature.
+
+<br><b> train.csv: </b>Feature annotations for 1000 of the patient notes, 100 for each of ten cases.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp id - Unique identifier for each patient note / feature pair.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp pn_num - The patient note annotated in this row.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp feature_num - The feature annotated in this row.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp case_num - The case to which this patient note belongs.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp annotation - The text(s) within a patient note indicating a feature. A feature may be indicated multiple times within a single note.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp location - Character spans indicating the location of each annotation within the note. Multiple spans may be needed to represent an annotation, in &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp which case the spans are delimited by a semicolon.
+<br> As the given 3 tables are of relational data, we can combine them into a flat data as shown below:
+<br>  <br> <img src="combined_train_snip.png" alt="training data" style="width:1200px;height:300px"> </img> <br>
+
+<h4> Feature Engineering </h4> 
+<p>Designed a word cloud of the words used in the feature text to understand about the most frequently used words.</p>
+<img src="wordcloud.png" alt="Word cloud of train data" style="width:700px;height:400px"> </img>
+<p>After Data Preprocessing you can clearly see the feature text, patient_history, annotations and the location of the annotations:</p>
+<img src="single.png" alt="single data" style="width:550px;height:400px">
+<br> <br>
+
+        <h2>BERT Model</h2>
+<p>The Bidirectional Encoder Representations from Transformers is an important milestone in the NLP world. It inspired many models based on this architecture, and one of the most important models is BERT. BERT stands for Bidirectional Encoder Representations from Transformers. BERT is a pre-trained language model using the encoder part of Transformer architecture. The input of BERT is a representation of each token. Each token consists of three parts: token embedding, segment embedding and position embedding. Token embedding is the word vector of each word or special character. The segment embedding is to identify different sentences. The position embedding is the location of each word. The final input will be the sum of these three embeddings. The output of the BERT model has two parts. The first is class token which means the output of the [CLS] token. This class token is to predict classification problems like sentiment classification. The second part is the output of other word tokens. These tokens are used in some token-level tasks like question answering and sequence labeling.
+<br> As our objective is to fine-tune our model to recognize entities, we use Named-entity Recognition (NER) which is "the task of tagging entities in text with their corresponding type." 
+</P>
+
+<img src="bert.png" alt="single data" style="width:800px;height:350px">
+<p><br><br>While most of the hyperparameters are already defined in pretrained model config, We used TRAIN_SPLIT = 0.8, BATCH_SIZE = 12, EPOCHS = 20, SEQUENCE_LENGTH = 512
+SEED = 999 and trained the model with Categorical crossentropy as the loss function and Adam W as the optimizer with lr=1e-5. 
+<br><br> After training the model on the training and validation dataset, the following graph is obtained w.r.t training and validation loss: </p>
+<img src="bert_loss.png" alt="single data" style="width:600px;height:450px">
+<h4> Future Steps: </h4>
+1. Using the model to predict on the test data
+<br>
+2. Implement the modifications of the BERT which are RoBERTa, PubMedBERT, bioBERT and perform comparative analysis.
+
+
+
+
+
+      </div>
+      <!--col-->
+    </div>
+    <!--row -->
+  </div> <!-- container -->
+
+  <footer class="nd-pagefooter">
+    <div class="row">
+      <div class="col-6 col-md text-center">
+        <a href="https://cs7150.baulab.info/">About CS 7150</a>
+      </div>
+    </div>
+  </footer>
+
+
+<script>
+  $(document).on('click', '.clickselect', function (ev) {
+    var range = document.createRange();
+    range.selectNodeContents(this);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  });
+  // Google analytics below.
+  window.dataLayer = window.dataLayer || [];
+</script>
+
+</body>
