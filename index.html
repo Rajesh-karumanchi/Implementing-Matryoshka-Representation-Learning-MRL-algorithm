@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title> Deep Learning </title>
+<meta property="og:title" content=Your Project Name" />
+<meta name="twitter:title" content="Your Project Name" />
+<meta name="description" content="Your project about your cool topic described right here." />
+<meta property="og:description" content="Your project about your cool topic described right here." />
+<meta name="twitter:description" content="Your project about your cool topic described right here." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" /> 
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- bootstrap for mobile-friendly layout -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+
+</head>
+<body class="nd-docs">
+<div class="nd-pageheader">
+ <div class="container">
+ <h1 class="lead">
+ <nobr class="widenobr">Automating Key Phrases identification in Patient Notes<nobr>
+ <nobr class="widenobr">CS 7150</nobr>
+ </h1>
+ </div>
+</div><!-- end nd-pageheader -->
+
+<div class="container">
+<div class="row">
+<div class="col justify-content-center text-center">
+<h2>Comparitive analysis of different BERT models on NBME - Score Clinical Patient Notes</h2>
+
+</div>
+</div>
+<div class="row">
+<div class="col">
+
+<h2>Proposal</h2>
+
+<p align = "justify"> In the United States, after visiting a patient, a doctor is required to make up a medical note for a variety of reasons, the most essential of which is to maintain track of the patient's medical history and symptom changes. As a result, fellow doctors manually rate the clinical note using a rubric already in place. This takes a large amount of time, as well as financial and human resources. To top it off, all physicians must go through training and be tested on it when they take the USMLE (United States Medical Licensing Examination), which is a necessity before they can begin their medical education. We will strive to discover an automated method to translate clinical ideas from the test rubric to many ways these concepts are conveyed in the patient clinical note in this project, which will allow a professional doctor to spend less time evaluating the notes of medical students and interns. Several Machine Learning and Deep learning models are developed to solve this problem. Some are listed below 
+  <ul>
+    <li>BERT</li>
+    <li>RoBERTa</li>
+    <li>DeBERTa</li>
+    <li>BioBERT</li>
+  </ul>
+</p>
+<h2>Related Work</h2>
+
+<p align = "justify">
+  Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova.(2018) [1] came up with language representation model named BERT(Bidirectional Encoder Representations from Transformers). They pointed out that the major limitation in standard language models is that they are unidirectional. Their idea is to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.</p>
+  
+  
+<p align = "justify"> Jinhyuk Lee, Wonjin Yoon, Sungdong Kim, Donghyeon Kim, Sunkyu Kim, Chan Ho So, and Jaewoo Kang (2019)[4] introduced BioBERT (Bidirectional Encoder Representations from Transformers for Biomedical Text Mining), which is pre-trained on on large-scale biomedical corpora. This model has potential to perform in a variety of biomedical text mining tasks.</p></p>
+
+<h3>References</h3>
+<p><a name="bottou-1990">[1]</a> <a href="https://arxiv.org/pdf/1810.04805.pdf"
+  >Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova (2018)
+  <em>) BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding </em></a>
+</p>
+
+<p><a name="bottou-1990">[2]</a> <a href="https://arxiv.org/pdf/1907.11692.pdf"
+  >Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov (2019)
+  <em>RoBERTa: A Robustly Optimized BERT Pretraining Approach</em></a>
+</p>
+<p><a name="bottou-1990">[3]</a> <a href="https://arxiv.org/pdf/2006.03654.pdf"
+  >Pengcheng He, Xiaodong Liu, Jianfeng Gao, Weizhu Chen (2021)
+  <em>DEBERTA: Decoding-Enhanced Bert With Disentangled Attention</em></a>
+</p>
+
+
+
+
+<p><a name="bottou-1990">[4]</a> <a href="https://arxiv.org/ftp/arxiv/papers/1901/1901.08746.pdf"
+  >Jinhyuk Lee, Wonjin Yoon, Sungdong Kim, Donghyeon Kim, Sunkyu Kim, Chan Ho So, and Jaewoo Kang (2019)
+  <em> BioBERT: A Pre-trained Biomedical Language Representation Model For Biomedical Text Mining.</em></a>
+</p>
+
+<h3>Project Progress</h3>
+<p><a href="milestone2.html"> Project Milestone-1</a></p>
+<h3>Final Report</h3>
+<p><a href="milestone3.html"> Project Milestone-2</a></p>                            
+<h3>Note</h3>
+<p>  We planned to implement Matryoshka Representation Learning, but due to the time constraints, issues with dataset and complex architecture of MRL we changed the project</p>
+
+
+<h2>Team Members</h2>
+                                                   
+<p>1. Sai Vineeth kaza </p>
+<p>2. Rajesh karumanchi </p>
+
+  
+</div><!--col-->
+</div><!--row -->
+</div> <!-- container -->
+
+<footer class="nd-pagefooter">
+  <div class="row">
+    <div class="col-6 col-md text-center">
+      <a href="https://cs7150.baulab.info/">About CS 7150</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script>
+$(document).on('click', '.clickselect', function(ev) {
+  var range = document.createRange();
+  range.selectNodeContents(this);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+});
+// Google analytics below.
+window.dataLayer = window.dataLayer || [];
+</script>
+</html>
