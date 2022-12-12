@@ -53,6 +53,7 @@ However, having physicians score patient note exams requires significant time, a
         </p>
 <h4> Dataset </h4>
 <p align = "justify"> The Dataset is from a Kaggle competition <a href= "https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/overview">NBME – Score Clinical Patient Notes.</a> The dataset contains of 3 training csv and 1 testing dataset csv.<br>
+<br>
 <b> Patient_notes.csv: </b> A collection of about 40,000 Patient Note history portions. Only a subset of these have features annotated. You may wish to apply unsupervised learning techniques on the notes without annotations. The patient notes in the test set are not included in the public version of this file.
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp pn_num - A unique identifier for each patient note. <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp case_num - A unique identifier for the clinical case a patient note represents.
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp pn_history - The text of the encounter as recorded by the test taker.
@@ -68,7 +69,7 @@ However, having physicians score patient note exams requires significant time, a
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp feature_num - The feature annotated in this row.
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp case_num - The case to which this patient note belongs.
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp annotation - The text(s) within a patient note indicating a feature. A feature may be indicated multiple times within a single note.
-<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp location - Character spans indicating the location of each annotation within the note. Multiple spans may be needed to represent an annotation, in &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp which case the spans are delimited by a semicolon.
+<br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp location - Character spans indicating the location of each annotation within the note. Multiple spans may be needed to represent an annotation, in &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp which case the spans are delimited by a semicolon.
 <br> As the given 3 tables are of relational data, we can combine them into a flat data as shown below:
 <br>  <br> <img src="combined_train_snip.png" alt="training data" style="width:1200px;height:300px"> </img> <br>
 
