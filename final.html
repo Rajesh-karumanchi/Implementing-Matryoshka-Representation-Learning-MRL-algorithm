@@ -1,6 +1,4 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-
 <head><style data-merge-styles="true">
 	img {
   display: block;
@@ -65,7 +63,7 @@
         <h3>Introduction</h3>
 
         <p align = "justify">
-		Across all the hospitals in the world, keeping track of the patient and his medical history details is the most important and essential task. It is mandatory for doctors starting their career to complete United States Medical Licensing Examination(USMLE). In this examination, the examinee needs to interact with trained patients and write a note regarding the patient’s condition. The patient notes consist of the patient's medical condition throughout the years, and accurate diagnosis. Achieving perfect patient notes requires a lot of feedback from senior and experienced doctors, and are scored in the end to decide which examinee is doing better. This process of scoring the patient notes needs a lot of human effort, and financial resources, and challenging to score as features can be expressed in many different ways. For instance, “Short-term memory loss” can be expressed as “not able to recall immediately” or “Diminished Appetite” can be expressed as “eating less” or “clothes fit looser”.
+		Across all the hospitals in the world, keeping track of the patient and his medical history details is the most important and essential task. It is mandatory for doctors starting their career to complete United States Medical Licensing Examination(USMLE). In this examination, the examinee needs to interact with trained patients and write a note regarding the patient's condition. The patient notes consist of the patient's medical condition throughout the years, and accurate diagnosis. Achieving perfect patient notes requires a lot of feedback from senior and experienced doctors, and are scored in the end to decide which examinee is doing better. This process of scoring the patient notes needs a lot of human effort, and financial resources, and challenging to score as features can be expressed in many different ways. For instance, “Short-term memory loss” can be expressed as “not able to recall immediately” or “Diminished Appetite” can be expressed as “eating less” or “clothes fit looser”.
 </p>
 <p align = "justify"> Recently, Kaggle has conducted a competition with the intention to automate the process of examination and rating of clinical notes by identifying the key phrases/features/context in the patient notes from Medical Licensing Exams using Natural Language Processing and Deep Learning strategies. One of the main Deep Learning strategies for identifying the key phrases and automating the process is using BERT (Bidirectional Encoder Representations from Transformers). While exploring BERT we learned about various advancements of the BERT model shown in Fig 1., like RoBERTa, PubMedBERT, and Bio Clinical BER. As this task is specifically related to the biomedical field, we wanted to compare the model performances of 2 generic BERT models( BERT base, RoBERTa) and 2 BioMed BERT models (PubMedBERT, Bio Clinical BERT). We performed finetuning BERT models and compared the metrics like F1 scores(accuracy metric), training loss, and time taken for the model to run and visualized the results accordingly.
 
@@ -133,7 +131,37 @@ BERT uses two training strategies:<br><br>
 <p align = "center">Fig 5. BERT Base model F1 Scores and Loss  </p>
 <p align= "justify"> While the F-1 accuracy is around 92% till epoch 5, Bert-base model was able to achieve good accuracy score of around 98% on both train and validation data without any overfitting. In the above loss plot, we can see that training loss decreases to a point of stability and testing loss is also decreased to a point of stability and has a small gap with the training loss. This indicates that the model is a good fit.  We can also observe convergence over the epochs and no overfitting.</p>
 
-<p><b> b.PubMed BERT:</b> </p>
+
+
+<p><b> b. RoBERTa (Robustly Optimized BERT pre-training Approach):</b> </p>
+<p align = "justify">While BERT is pre-trained on “Toronto BookCorpus” and “English Wikipedia datasets” i.e. as a total of 16 GB of data. RoBERTa was also trained on a. BOOKCORPUS (16GB) b. CC-NEWS (76GB) c. OPENWEBTEXT (38GB) d. STORIES (31GB) totalling aroung 160 GB. </p>
+
+<br> Other Key advancements are:<br>
+<p align = "justify"><b>  Dynamic Masking: </b> RoBERTa uses dynamic masking, wherein for different Epochs different part of the sentences are masked. This makes the model more robust than BERT which uses static masking i.e. masking the same part of the sentence in each Epoch. </p>
+<p align = "justify"><b>  Remove NSP Task: </b>As NSP was not so useful in pre-training BERT. RoBERTa Skips NSP step and Uses only MLM task for training. </p>
+<p align = "justify"><b>  Large Batch size: </b> BERT uses a batch size of 256 with 1 million steps. RoBERTa used a batch size of 8,000 with 300,000 steps inorder to improve speed and performance. </p>
+The configuration for Roberta-base model is Robertaconfig which is shown in Fig 6.   
+
+</p>
+<img src="bert_config.png" alt="Word cloud of train data" style="width:550px;height:500px"> </img>
+<p align = "center">Fig 6. Pre-trained RoBERTa model Configuration </p>
+
+<p> And the training parameters are: TRAIN_SPLIT = 0.8, BATCH_SIZE = 12, EPOCHS = 20, SEQUENCE_LENGTH = 512 SEED = 999 </p>
+<p>After implementing the pre-trained model on our dataset, we got the following loss and F1-Score graphs as shown in Fig 7: </p>
+<div class="row">
+  <div class="column">
+    <img src="roberta_f1.png" alt="single data" style="width:500px;height:350px">
+
+  </div>
+  <div class="column">
+    <img src="roberta_loss.png" alt="single data" style="width:500px;height:350px">
+</div>
+  </div>
+<p align = "center">Fig 7. RoBERTa model F1 Scores and Loss </p>
+<p align = "justify"> Similar to BERT, F-1 accuracy of RoBERTa is around 92% till epoch 5, then Roberta-base model was able to achieve good accuracy score of around 98.2% on both train and nearly 98% on validation data without any overfitting. In the above loss plot, we can see that training and testing loss are decreased to a point of stability and testing loss has a small gap with the training loss. This indicates that the model is a good fit. We can also observe convergence over the epochs and no overfitting. Compared to BERT, RoBERTa has a bit better accuracy and less loss. This is because RoBERTa is an advancement of BERT. </p>
+
+
+<p><b> c.PubMed BERT:</b> </p>
 <p align = "justify">Pretraining large neural language models, such as BERT, has led to impressive gains on many natural language processing (NLP) tasks. However, most pretraining efforts focus on general domain corpora, such as News, Books, and Wikipedia. We can use various NLP models to pre train the BERT models as shown in the Fig 8. We can make the pretraining domain-specific as required by the question we are trying to answer. This domain-specific pretraining using bio-medical domain corpus serves as a solid foundation for a wide range of biomedical NLP tasks, leading to new state-of-the-art results like PubMed and BioBert. 
 
 </p>
@@ -160,33 +188,6 @@ BERT uses two training strategies:<br><br>
 <p align = "center">Fig 11: PubMed BERT Model F1 Scores and Loss  </p>
 <p align = "justify"> From the above graphs, we can see that PubMedBERT was able to achieve nearly 90% accuracy on training and nearly 82% on validation data for 5 epoch. From the loss plot, we can observe that training loss continues to decrease with each epoch whereas testing loss decreases to a point and starts to increase again. This indicates that the model is overfitting. Compared to BERT and  RoBERTa, we can see that PubMed BERT model has less accuracy and is overfitting. </p>
 
-
-<p><b> c. RoBERTa (Robustly Optimized BERT pre-training Approach):</b> </p>
-<p align = "justify">While BERT is pre-trained on “Toronto BookCorpus” and “English Wikipedia datasets” i.e. as a total of 16 GB of data. RoBERTa was also trained on a. BOOKCORPUS (16GB) b. CC-NEWS (76GB) c. OPENWEBTEXT (38GB) d. STORIES (31GB) totalling aroung 160 GB. </p>
-
-<br> Other Key advancements are:<br>
-<p align = "justify"><b>  Dynamic Masking: </b> RoBERTa uses dynamic masking, wherein for different Epochs different part of the sentences are masked. This makes the model more robust than BERT which uses static masking i.e. masking the same part of the sentence in each Epoch. </p>
-<p align = "justify"><b>  Remove NSP Task: </b>As NSP was not so useful in pre-training BERT. RoBERTa Skips NSP step and Uses only MLM task for training. </p>
-<p align = "justify"><b>  Large Batch size: </b> BERT uses a batch size of 256 with 1 million steps. RoBERTa used a batch size of 8,000 with 300,000 steps inorder to improve speed and performance. </p>
-The configuration for Roberta-base model is Robertaconfig which is shown in Fig 6.   
-
-</p>
-<img src="bert_config.png" alt="Word cloud of train data" style="width:550px;height:500px"> </img>
-<p align = "center">Fig 6. Pre-trained RoBERTa model Configuration </p>
-
-<p> And the training parameters are: TRAIN_SPLIT = 0.8, BATCH_SIZE = 12, EPOCHS = 20, SEQUENCE_LENGTH = 512 SEED = 999 </p>
-<p>After implementing the pre-trained model on our dataset, we got the following loss and F1-Score graphs as shown in Fig 7: </p>
-<div class="row">
-  <div class="column">
-    <img src="roberta_f1.png" alt="single data" style="width:500px;height:350px">
-
-  </div>
-  <div class="column">
-    <img src="roberta_loss.png" alt="single data" style="width:500px;height:350px">
-</div>
-  </div>
-<p align = "center">Fig 7. RoBERTa model F1 Scores and Loss </p>
-<p align = "justify"> Similar to BERT, F-1 accuracy of RoBERTa is around 92% till epoch 5, then Roberta-base model was able to achieve good accuracy score of around 98.2% on both train and nearly 98% on validation data without any overfitting. In the above loss plot, we can see that training and testing loss are decreased to a point of stability and testing loss has a small gap with the training loss. This indicates that the model is a good fit. We can also observe convergence over the epochs and no overfitting. Compared to BERT, RoBERTa has a bit better accuracy and less loss. This is because RoBERTa is an advancement of BERT. </p>
 
 
 
@@ -222,7 +223,7 @@ The configuration for Roberta-base model is Robertaconfig which is shown in Fig 
 <p align = "justify"> From the above graphs, we can see that Bio Clinical BERT was able to achieve nearly 90% accuracy on training and nearly 80% on validation data for 5 epoch. Similar to PubMed BERT, we can notice from the loss graph, that training loss continues to decrease with each epoch whereas testing loss decreases to a point and starts to increase again. This indicates that the model is overfitting. Compared to the above 3 models, we can observe that Bio Clinical Bert has the least accuracy and is also overfitting.</p>
 
 
-<p><b>Results and Conclusion:</b></p>
+<h4>Results and Conclusion:</h4>
 <p align = "justify">After implementing the above-mentioned BERT model and 3 of its advancements, we will get the following comparison table as shown in Table 1.  </p>
 <img src="comparison_table.png" alt="single data" style="width:800px;height:400px">
 <p align = "center">Table 1: Comparison table of 4 BERT models</p>
@@ -242,12 +243,21 @@ The configuration for Roberta-base model is Robertaconfig which is shown in Fig 
 
 
 
-
-
-
-
-
-
+<h4> References </h4> 
+<p> <b>[1]</b> <a href = "https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/data"> https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/data </a>
+<br><b> [2] </b> <a href = "https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270"> https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270 </a>
+<br><b> [3]</b> <a href = "https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T"> https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T </a>
+<br><b> [4] BERT paper: </b> <a href = "https://arxiv.org/pdf/1810.04805.pdf"> https://arxiv.org/pdf/1810.04805.pdf </a>
+<br> <b>[5]</b> <a href = "https://towardsdatascience.com/exploring-bert-variants-albert-roberta-electra-642dfe51bc23#:~:text=Dynamic%20Masking%3A%20BERT%20uses%20static,makes%20the%20model%20more%20robust."> https://towardsdatascience.com/exploring-bert-variants-albert-roberta-electra-642dfe51bc23#:~:text=Dynamic%20Masking%3A%20BERT%20uses%20static,makes%20the%20model%20more%20robust.</a>
+<br><b> [6]  RoBERTa paper: </b> <a href = "https://arxiv.org/pdf/1907.11692.pdf"> https://arxiv.org/pdf/1907.11692.pdf</a>
+<br><b> [7] Pubmed BERT paper: </b> <a href = "https://arxiv.org/abs/2007.15779v6"> https://arxiv.org/abs/2007.15779v6 </a>
+<br><b> [8]  Bio BERT paper: </b><a href = "https://arxiv.org/ftp/arxiv/papers/1901/1901.08746.pdf"> https://arxiv.org/ftp/arxiv/papers/1901/1901.08746.pdf
+ </a>
+<br><b> [9] Bio Clinical Bert Paper:</b> <a href = "https://arxiv.org/pdf/1904.03323.pdf"> https://arxiv.org/pdf/1904.03323.pdf</a>
+<br><b> [10] PubMed Pre-trained model: </b> <a href = "https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"> https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext </a>
+<br><b> [11] RoBERTa Pre-trained model: </b> <a href = "https://huggingface.co/docs/transformers/model_doc/roberta#transformers.RobertaModel"> https://huggingface.co/docs/transformers/model_doc/roberta#transformers.RobertaModel </a>
+<br><b> [12] Bio Clinical BERT Pre-trained model: </b><a href = "https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT"> https://huggingface.co/emilyalsentzer/Bio_ClinicalBERT </a>
+<br><b> [13]  BERT Pre-trained model: </b><a href = "https://huggingface.co/docs/transformers/model_doc/bert"> https://huggingface.co/docs/transformers/model_doc/bert </a>
 
 
 
