@@ -60,7 +60,7 @@
     <div class="row">
       <div class="col">
 
-        <h3>Introduction</h3>
+		      <h3><b>Introduction</b></h3>
 
         <p align = "justify">
 		Across all the hospitals in the world, keeping track of the patient and his medical history details is the most important and essential task. It is mandatory for doctors starting their career to complete United States Medical Licensing Examination(USMLE). In this examination, the examinee needs to interact with trained patients and write a note regarding the patient's condition. The patient notes consist of the patient's medical condition throughout the years, and accurate diagnosis. Achieving perfect patient notes requires a lot of feedback from senior and experienced doctors, and are scored in the end to decide which examinee is doing better. This process of scoring the patient notes needs a lot of human effort, and financial resources, and challenging to score as features can be expressed in many different ways. For instance, “Short-term memory loss” can be expressed as “not able to recall immediately” or “Diminished Appetite” can be expressed as “eating less” or “clothes fit looser”.
@@ -75,7 +75,7 @@
 </p>
 
 
-<h4> Background: </h4>
+<h4><b> Background: </b></h4>
 
 <br><b> BERT: </b>
 <p align = "justify"> The Bidirectional Encoder Representations from Transformers (BERT) is an important milestone in the NLP world. BERT is a pre-trained language model using the encoder part of Transformer architecture. It was developed in 2018 by researchers at Google AI Language and serves as a swiss army knife to 11+ of the most common language tasks, such as sentiment analysis and named entity recognition. A language model which is bi-directionally trained can have a deeper sense of language context and flow than single-direction language models. BERT makes use of a Transformer, an attention mechanism that learns contextual relations between words (or sub-words) in a text. In its vanilla form, Transformer includes two separate mechanisms — an encoder that reads the text input and a decoder that produces a prediction for the task. Since BERT’s goal is to generate a language model, only the encoder mechanism is necessary.  </P>
@@ -105,7 +105,7 @@ BERT uses two training strategies:<br><br>
 </p>
 
 
-<h4> Methodology </h4> 
+		   <h4><b> Methodology </b></h4> 
 
 <p align = "justify">Using the dataset obtained from Kaggle[1]. We studied different variations of BERT which are a. BERT-Base-Uncased b. RoBERTa-Base c.  PubMedBERT (abstracts + full text) d. BioClinicalBERT and implemented the pre-trained versions of the above to perform comparative analysis.
 </p>
@@ -223,7 +223,7 @@ The configuration for Roberta-base model is Robertaconfig which is shown in Fig 
 <p align = "justify"> From the above graphs, we can see that Bio Clinical BERT was able to achieve nearly 90% accuracy on training and nearly 80% on validation data for 5 epoch. Similar to PubMed BERT, we can notice from the loss graph, that training loss continues to decrease with each epoch whereas testing loss decreases to a point and starts to increase again. This indicates that the model is overfitting. Compared to the above 3 models, we can observe that Bio Clinical Bert has the least accuracy and is also overfitting.</p>
 
 
-<h4>Results and Conclusion:</h4>
+		    <h4><b>Results and Conclusion:</b></h4>
 <p align = "justify">After implementing the above-mentioned BERT model and 3 of its advancements, we will get the following comparison table as shown in Table 1.  </p>
 <img src="comparison_table.png" alt="single data" style="width:800px;height:400px">
 <p align = "center">Table 1: Comparison table of 4 BERT models</p>
@@ -243,7 +243,7 @@ The configuration for Roberta-base model is Robertaconfig which is shown in Fig 
 <p align = "justify"> For future work, we can try implementing more advanced BERT models like LayoutLM,  Clinical LongFormer, Clinical - BigBird, and Clinical Outcome Representation models. We can try to play around with the corpus data for training, tune the hyperparameters, play around with the model architectures, and add more deeper layered networks for better accuracy and prediction results. </p>
 
 
-<h4> References </h4> 
+		    <h4> <b>References </b></h4> 
 <p> <b>[1]</b> <a href = "https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/data"> https://www.kaggle.com/competitions/nbme-score-clinical-patient-notes/data </a>
 <br><b> [2] </b> <a href = "https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270"> https://towardsdatascience.com/bert-explained-state-of-the-art-language-model-for-nlp-f8b21a9b6270 </a>
 <br><b> [3]</b> <a href = "https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T"> https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T </a>
