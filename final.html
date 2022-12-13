@@ -71,18 +71,18 @@
 <img src="bert_intro.png" alt="single data" style="width:600px;height:500px">
 									    <p class = "center"> <b>Fig 1: </b>. Overview of training process using BERT and its advancements
 </p>
-<p align = "justify"> Source: <a href = "https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T">https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T </a>
+											       <p align = "justify"><b> Source:</b> <a href = "https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T">https://handsonnlpmodelreview.quora.com/Maximizing-BERT-model-performance-An-approach-to-evaluate-a-pre-trained-BERT-model-to-increase-performance-Figure-1-T </a>
 </p>
 
 
-<h4><b> Background: </b></h4>
+<h4><b> Background </b></h4>
 
 <br><b> BERT: </b>
 <p align = "justify"> The Bidirectional Encoder Representations from Transformers (BERT) is an important milestone in the NLP world. BERT is a pre-trained language model using the encoder part of Transformer architecture. It was developed in 2018 by researchers at Google AI Language and serves as a swiss army knife to 11+ of the most common language tasks, such as sentiment analysis and named entity recognition. A language model which is bi-directionally trained can have a deeper sense of language context and flow than single-direction language models. BERT makes use of a Transformer, an attention mechanism that learns contextual relations between words (or sub-words) in a text. In its vanilla form, Transformer includes two separate mechanisms — an encoder that reads the text input and a decoder that produces a prediction for the task. Since BERT’s goal is to generate a language model, only the encoder mechanism is necessary.  </P>
 BERT uses two training strategies:<br><br>
 <b>Masked LM (MLM)</b><br>
 <p align = "justify"> Before feeding word sequences into BERT, 15% of the words in each sequence are replaced with a [MASK] token. The model then attempts to predict the original value of the masked words, based on the context provided by the other, non-masked, words in the sequence. The working of this training strategy is shown in Fig 2. In technical terms, the prediction of the output words requires:
-
+<br>
 <br class="br"> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. Adding a classification layer on top of the encoder output.
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 2. Multiplying the output vectors by the embedding matrix, transforming them into the vocabulary dimension.
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 3. Calculating the probability of each word in the vocabulary with softmax.
@@ -93,7 +93,7 @@ BERT uses two training strategies:<br><br>
 <b>Next Sentence Prediction (NSP)</b><br>
 <p align = "justify"> In this step, the model learns to predict if the second sentence in the pair is the subsequent sentence in the original document. During training, 50% of the inputs are a pair in which the second sentence is the subsequent sentence in the original document, while in the other 50% a random sentence from the corpus is chosen as the second sentence. The assumption is that the random sentence will be disconnected from the first sentence. The working of this training strategy is shown in Fig 3. To predict if the second sentence is indeed connected to the first, the following steps are performed. 
 
-
+<br>
 <br class="br"> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 1. The entire input sequence goes through the Transformer model.
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 2. The output of the [CLS] token is transformed into a 2×1 shaped vector, using a simple classification layer (learned matrices of weights and biases).
 <br> &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 3. Calculating the probability of IsNextSequence with softmax.</P>
