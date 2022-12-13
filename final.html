@@ -136,7 +136,7 @@ BERT uses two training strategies:<br><br>
 <p><b> 2. RoBERTa (Robustly Optimized BERT pre-training Approach):</b> </p>
 <p align = "justify">While BERT is pre-trained on “Toronto BookCorpus” and “English Wikipedia datasets” i.e. as a total of 16 GB of data. RoBERTa was also trained on a. BOOKCORPUS (16GB) b. CC-NEWS (76GB) c. OPENWEBTEXT (38GB) d. STORIES (31GB) totalling aroung 160 GB. </p>
 
-<br> Other Key advancements are:<br>
+ Other Key advancements are:<br>
 <p align = "justify"><b>  Dynamic Masking: </b> RoBERTa uses dynamic masking, wherein for different Epochs different part of the sentences are masked. This makes the model more robust than BERT which uses static masking i.e. masking the same part of the sentence in each Epoch. </p>
 <p align = "justify"><b>  Remove NSP Task: </b>As NSP was not so useful in pre-training BERT. RoBERTa Skips NSP step and Uses only MLM task for training. </p>
 <p align = "justify"><b>  Large Batch size: </b> BERT uses a batch size of 256 with 1 million steps. RoBERTa used a batch size of 8,000 with 300,000 steps inorder to improve speed and performance. </p>
