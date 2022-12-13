@@ -24,7 +24,7 @@
 }
 
 </style>
-  <style data-merge-styles="true"></style><title>Improving NIC</title>
+  <style data-merge-styles="true"></style><title>Understanding BERT and its advancements</title>
   <meta property="og:title" content="Your" project="" name"="">
   <meta name="twitter:title" content="Your Project Name">
   <meta name="description" content="Your project about your cool topic described right here.">
@@ -45,7 +45,7 @@
   <div class="nd-pageheader">
     <div class="container">
       <h1 class="lead">
-        <nobr class="widenobr">Deep Learning Final Project</nobr>
+        <nobr class="widenobr">Automating Key Phrases Identification in Pateint Notes</nobr>
         <nobr class="widenobr">For CS 7150</nobr>
       </h1>
     </div>
@@ -109,7 +109,7 @@ BERT uses two training strategies:<br><br>
 
 <p align = "justify">Using the dataset obtained from Kaggle[1]. We studied different variations of BERT which are a. BERT-Base-Uncased b. RoBERTa-Base c.  PubMedBERT (abstracts + full text) d. BioClinicalBERT and implemented the pre-trained versions of the above to perform comparative analysis.
 </p>
-<p><b> a.BERT:</b> </p>
+<p><b> 1.BERT:</b> </p>
 <p align = "justify"> Much similar to the NER(Names Entity Recognition) mechanism our model masks various types of feature contexts in the patient notes and is trained to predict the feature or annotation of that concept by feeding the output vector of each token into a classification layer.  </p>
 <p> The architecture and training process of BERT is discussed above. The configuration of bert-base model is BertConfig which is shown in Fig 4:
 
@@ -133,7 +133,7 @@ BERT uses two training strategies:<br><br>
 
 
 
-<p><b> b. RoBERTa (Robustly Optimized BERT pre-training Approach):</b> </p>
+<p><b> 2. RoBERTa (Robustly Optimized BERT pre-training Approach):</b> </p>
 <p align = "justify">While BERT is pre-trained on “Toronto BookCorpus” and “English Wikipedia datasets” i.e. as a total of 16 GB of data. RoBERTa was also trained on a. BOOKCORPUS (16GB) b. CC-NEWS (76GB) c. OPENWEBTEXT (38GB) d. STORIES (31GB) totalling aroung 160 GB. </p>
 
 <br> Other Key advancements are:<br>
@@ -161,7 +161,7 @@ The configuration for Roberta-base model is Robertaconfig which is shown in Fig 
 <p align = "justify"> Similar to BERT, F-1 accuracy of RoBERTa is around 92% till epoch 5, then Roberta-base model was able to achieve good accuracy score of around 98.2% on both train and nearly 98% on validation data without any overfitting. In the above loss plot, we can see that training and testing loss are decreased to a point of stability and testing loss has a small gap with the training loss. This indicates that the model is a good fit. We can also observe convergence over the epochs and no overfitting. Compared to BERT, RoBERTa has a bit better accuracy and less loss. This is because RoBERTa is an advancement of BERT. </p>
 
 
-<p><b> c.PubMed BERT:</b> </p>
+<p><b> 3.PubMed BERT:</b> </p>
 <p align = "justify">Pretraining large neural language models, such as BERT, has led to impressive gains on many natural language processing (NLP) tasks. However, most pretraining efforts focus on general domain corpora, such as News, Books, and Wikipedia. We can use various NLP models to pre train the BERT models as shown in the Fig 8. We can make the pretraining domain-specific as required by the question we are trying to answer. This domain-specific pretraining using bio-medical domain corpus serves as a solid foundation for a wide range of biomedical NLP tasks, leading to new state-of-the-art results like PubMed and BioBert. 
 
 </p>
@@ -191,7 +191,7 @@ The configuration for Roberta-base model is Robertaconfig which is shown in Fig 
 
 
 
-<p><b> d.Bio_Clinical-Bert </b> </p>
+<p><b> 4.BioClinical BERT </b> </p>
 <p align = "justify">Bio Clinical Bert is an advanced model of BioBERT with the base model being BioBERT-Base v1.0 and pre-trained using  200K PubMed abstracts,  270K PMC full-text articles & trained on either all MIMIC notes or only discharge summaries. MIMIC III, a database containing electronic health records from ICU patients at the Beth Israel Hospital in Boston, MA. This additional pre-training to the BioBERT using MIMIC notes resulted in the name Bio Clinical BERT. The text corpus of the Bio Clinical BERT model is shown below in figure 13.</p>
 <p align="justify"> The pre-trained model used is configured by Microsoft and MIT researchers. Configurations used by the pre-trained Bio Clinical BERT model and the hyperparameters of the model are shown in the figures below. </p>
 <div class="row">
